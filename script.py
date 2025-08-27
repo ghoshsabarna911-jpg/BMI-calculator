@@ -1,35 +1,38 @@
-a = float(input('Enter your weight in kgs or lbs: '))
-b = float(input('Enter your height in inches or cms: '))
-y = input('Was your weight in kgs or lbs? ').strip().upper()
-z = input('Was your height in inches or cms? ').strip().upper()
+import streamlit as st
+
+st.title("BMI Calculator")
+
+# Input fields
+weight = st.number_input("Enter your weight:", min_value=1.0)
+weight_unit = st.selectbox("Select weight unit:", ["kgs", "lbs"])
+height = st.number_input("Enter your height:", min_value=1.0)
+height_unit = st.selectbox("Select height unit:", ["cms", "inches"])
 
 # Convert weight to kg
-if y == 'KGS':
-    pass
-elif y == 'LBS':
-    a = a * 0.453592
+if weight_unit.lower() == "lbs":
+    weight = weight * 0.453592
 
 # Convert height to meters
-if z == 'CMS':
-    b = b * 0.01
-elif z == 'INCHES':
-    b = b * 0.0254
+if height_unit.lower() == "cms":
+    height = height * 0.01
+elif height_unit.lower() == "inches":
+    height = height * 0.0254
 
 # Calculate BMI
-BMI = a / (b**2)
+if weight > 0 and height > 0:
+    BMI = weight / (height ** 2)
+    st.write(f"Your BMI is: **{BMI:.2f}**")
 
-print(f'Your BMI is: {BMI:.2f}')
+    # BMI Categories
+    if BMI < 18.5:
+        st.info("You are underweight, need to gain some weight.")
+    elif 18.5 <= BMI < 25:
+        st.success("You are normal, don’t listen to others.")
+    elif 25 <= BMI < 30:
+        st.warning("You are overweight, not obese but still need to lose some weight.")
+    elif 30 <= BMI < 40:
+        st.error("You are obese and need to lose some weight.")
+    else:
+        st.error("You are severely obese, it is serious and possibly harmful.")
 
-# BMI Categories
-if BMI < 18.5:
-    print('You are underweight, need to gain some weight.')
-elif 18.5 <= BMI < 25:
-    print('You are normal, don’t listen to others.')
-elif 25 <= BMI < 30:
-    print('You are overweight, not obese but still need to lose some weight.')
-elif 30 <= BMI < 40:
-    print('You are obese and need to lose some weight.')
-else:
-    print('You are severely obese, it is serious and possibly harmful.')
-
-print('Results are for adults only and do not apply to teenagers or kids. THANK YOU!')
+st.write("Results are for adults only and do not apply to teenagers or kids. THANK YOU!")

@@ -41,12 +41,13 @@ if weight > 0 and height > 0:
      st.warning(f"you need to gain: **{v:.2f}**  kgs")
     elif BMI > 25:
      weightt = 25 * (height**2)
-     v = weight - weight
+     v = weight - weightt
      st.write(f"you need to lose: **{v:.2f}**  kgs")
         
     
 
 st.write("Results are for adults only and do not apply to teenagers or kids. THANK YOU!")
+
 
 
 

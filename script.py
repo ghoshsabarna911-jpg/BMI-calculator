@@ -1,4 +1,4 @@
-wimport streamlit as st
+import streamlit as st
 
 st.title("BMI Calculator")
 
@@ -46,6 +46,7 @@ if weight > 0 and height > 0:
     
 
 st.write("Results are for adults only and do not apply to teenagers or kids. THANK YOU!")
+
 
 
 

@@ -27,7 +27,7 @@ if weight > 0 and height > 0:
     if BMI < 18.5:
         st.info("You are underweight, need to gain some weight.")
     elif 18.5 <= BMI < 25:
-        st.success("You are normal, don’t listen to others.")
+        st.success("You fall in the healthy/normal range.")
     elif 25 <= BMI < 30:
         st.warning("You are overweight, not obese but still need to lose some weight.")
     elif 30 <= BMI < 40:
@@ -47,6 +47,7 @@ if weight > 0 and height > 0:
     
 
 st.write("Results are for adults only and do not apply to teenagers or kids. THANK YOU!")
+
 
 
 

@@ -34,5 +34,16 @@ if weight > 0 and height > 0:
         st.error("You are obese and need to lose some weight.")
     else:
         st.error("You are severely obese, it is serious and possibly harmful.")
+        
+    if BMI < 18.5: #(0,18.5)
+    x = 18.5 * (b**2)
+    v = x - a
+    print('you need to gain ' + str(v) + ' kgs')
+    elif BMI > 25:
+    x = 25 * (b**2)
+    v = a - x
+    print('you need to lose ' + str(v) + ' kgs'),
+    
 
 st.write("Results are for adults only and do not apply to teenagers or kids. THANK YOU!")
+
